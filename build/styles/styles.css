@@ -1,7 +1,7 @@
-/*#map{
+#map-canvas{
   height: 400px;
   width: 600px;
-}*/
-.angular-google-map-container {
-        height: 400px;
 }
+/*.angular-google-map-container {
+        height: 400px;
+}*/

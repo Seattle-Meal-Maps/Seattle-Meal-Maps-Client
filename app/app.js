@@ -22,3 +22,25 @@ angular.module('FoodApp', ['ngRoute'])
         }, err => console.log('GET ERROR! ', err))
     }
   }])
+  .directive('myMaps', function(){
+    return{
+      restrict: 'E',
+      template: '<div></div>',
+      replace: true,
+      link: function(scope, element, attrs) {
+        var myLatLng = new google.maps.LatLng(47.6062, -122.3321);
+        var mapOptions = {
+          center: myLatLng,
+          zoom: 8,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById(attrs.id), mapOptions);
+        var marker = new google.maps.Marker({
+          position: myLatLng,
+          map: map,
+          title: 'hello world'
+        });
+        marker.setMap(map);
+      }
+    };
+  });

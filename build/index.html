@@ -4,11 +4,12 @@
     <meta charset="utf-8">
     <title>Angular food finder app</title>
     <link rel="stylesheet" href="./styles/styles.css"></link>
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyA9Pjx18wRYcL0GqoAjlM7H4txb88Qr-n8&sensor=false"></script>
   </head>
   <body ng-controller="MapController as mapctrl">
     {{mapctrl.message}}
     <div id="map"></div>
-
+    <my-maps id="map-canvas"></my-maps>
     <button ng-click="mapctrl.getInfo()">Get info!</button>
 
     <script src="bundle.js"></script>

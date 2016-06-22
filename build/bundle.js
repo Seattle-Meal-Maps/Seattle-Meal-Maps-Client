@@ -60,7 +60,7 @@
 	angular.module('FoodApp', ['ngRoute'])
 	  .controller('MapController', ['$http', function($http) {
 	    let vm = this;
-	    vm.message = 'its working';
+	    vm.message = 'loading...';
 	    vm.map = { center: { latitude: 45, longitude: -73 }, zoom: 8 };
 	    // vm.mapOptions = {
 	    //     zoom: 4,
@@ -76,6 +76,28 @@
 	        }, err => console.log('GET ERROR! ', err))
 	    }
 	  }])
+	  .directive('myMaps', function(){
+	    return{
+	      restrict: 'E',
+	      template: '<div></div>',
+	      replace: true,
+	      link: function(scope, element, attrs) {
+	        var myLatLng = new google.maps.LatLng(47.6062, -122.3321);
+	        var mapOptions = {
+	          center: myLatLng,
+	          zoom: 8,
+	          mapTypeId: google.maps.MapTypeId.ROADMAP
+	        };
+	        var map = new google.maps.Map(document.getElementById(attrs.id), mapOptions);
+	        var marker = new google.maps.Marker({
+	          position: myLatLng,
+	          map: map,
+	          title: 'hello world'
+	        });
+	        marker.setMap(map);
+	      }
+	    };
+	  });
 
 
 /***/ },
