@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html ng-app="FoodApp">
+  <head>
+    <meta charset="utf-8">
+    <title>Angular food finder app</title>
+    <link rel="stylesheet" href="./styles/styles.css"></link>
+  </head>
+  <body ng-controller="MapController as mapctrl">
+    {{mapctrl.message}}
+    <div id="map"></div>
+
+    <button ng-click="mapctrl.getInfo()">Get info!</button>
+
+    <script src="bundle.js"></script>
+  </body>
+</html>

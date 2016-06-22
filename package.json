@@ -1,0 +1,30 @@
+{
+  "name": "ang-seattle-meal-client-app",
+  "version": "0.1.0",
+  "description": "find meal alternatives",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Seattle-Meal-Maps/Seattle-Meal-Maps-Client.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Seattle-Meal-Maps/Seattle-Meal-Maps-Client/issues"
+  },
+  "homepage": "https://github.com/Seattle-Meal-Maps/Seattle-Meal-Maps-Client#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "jasmine": "^2.4.1",
+    "karma": "^0.13.22",
+    "webpack-stream": "^3.2.0"
+  },
+  "dependencies": {
+    "angular": "^1.5.7",
+    "angular-google-maps": "^2.3.3",
+    "angular-route": "^1.5.7"
+  }
+}
