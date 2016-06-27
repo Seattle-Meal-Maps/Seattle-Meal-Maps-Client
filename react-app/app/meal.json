@@ -1,0 +1,71 @@
+{"meals" :[
+  {
+    "name": "Asian Counseling and Referral Services",
+    "address": "3639 Martin Luther King Jr. Way S., Seattle",
+    "latitude": "",
+    "longitude": "",
+    "data1": []
+  },
+  {
+    "name": "Beacon Avenue Food Bank",
+    "address": "6230 Beacon Ave South, Seattle, WA",
+    "latitude": "",
+    "longitude": "",
+    "data1": []
+  },
+  {
+    "name": "Ballard Food Bank",
+    "address": "5130 Leary Ave NW, Seattle, WA",
+    "latitude": "47.665649",
+    "longitude": "-122.380465",
+    "data1": []
+  },
+  {
+    "name": "Test Location",
+    "address": "321 Broadway East, Seattle, WA",
+    "latitude": "47.621683",
+    "longitude": "-122.321295",
+    "data1": [
+      {
+        "program_type": "meal program",
+        "requirements": "all",
+        "meal": "Lunch",
+        "day": "EVERYDAY",
+        "from_hour": "11:00:00",
+        "to_hour": "13:00:00"
+      },
+      {
+        "program_type": "food bank",
+        "requirements": "all",
+        "meal": "N/A",
+        "day": "EVERYDAY",
+        "from_hour": "06:00:00",
+        "to_hour": "12:00:00"
+      }
+    ]
+  },
+  {
+    "name": "Test Location 2",
+    "address": "1414 S. King St., Seattle, WA",
+    "latitude": "",
+    "longitude": "",
+    "data1": [
+      {
+        "program_type": "food bank",
+        "requirements": "22 and younger",
+        "meal": "N/A",
+        "day": "Wednesday",
+        "from_hour": "19:40:14",
+        "to_hour": "18:00:00"
+      }
+    ]
+  },
+  {
+    "name": "Test 3",
+    "address": "321 Broad St, Seattle, WA",
+    "latitude": "",
+    "longitude": "",
+    "data1": []
+  }
+]
+}
