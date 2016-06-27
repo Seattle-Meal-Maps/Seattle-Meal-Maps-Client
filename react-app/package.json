@@ -1,7 +1,7 @@
 {
-  "name": "react-mapbox-gl",
+  "name": "seattle-meal-maps-client",
   "version": "0.7.2",
-  "description": "A React binding of mapbox-gl-js",
+  "description": "A meal finder app using ReactJS",
   "main": "dist/index.js",
   "jsnext:main": "es/index.js",
   "scripts": {
@@ -9,8 +9,8 @@
     "build": "babel src --out-dir dist && cp -R src/mapbox-css dist",
     "prepublish": "npm run clean && npm run build",
     "postversion": "git push && git push --tags",
-    "example": "webpack-dev-server --config ./webpack.config.dev.js",
-    "build-example": "webpack --config ./webpack.config.dev.js"
+    "app": "webpack-dev-server --config ./webpack.config.dev.js",
+    "build-app": "webpack --config ./webpack.config.dev.js"
   },
   "files": [
     "dist",
@@ -18,7 +18,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/alex3165/react-mapbox-gl.git"
+    "url": "git+https://github.com/Seattle-Meal-Maps/Seattle-Meal-Maps-Client"
   },
   "keywords": [
     "mapbox",
@@ -28,12 +28,11 @@
     "mapbox-gl",
     "react-component"
   ],
-  "author": "Alexandre Rieux",
-  "license": "MIT",
+  "author": "Lisa Wenke",
   "bugs": {
-    "url": "https://github.com/alex3165/react-mapbox-gl/issues"
+    "url": "https://github.com/Seattle-Meal-Maps/Seattle-Meal-Maps-Client/issues"
   },
-  "homepage": "https://github.com/alex3165/react-mapbox-gl#readme",
+  "homepage": "https://github.com/Seattle-Meal-Maps/Seattle-Meal-Maps-Client#readme",
   "dependencies": {
     "deep-equal": "^1.0.1",
     "mapbox-gl": "^0.20.0",
