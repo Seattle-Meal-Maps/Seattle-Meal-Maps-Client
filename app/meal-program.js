@@ -1,30 +1,67 @@
 import React, { Component } from "react";
 import ReactMapboxGl, { Layer, Feature, Popup, ZoomControl } from "../src/index";
 
-import { parseString } from "xml2js";
-import { Map } from "immutable";
+// import { parseString } from "xml2js";
+// import { Map } from "immutable";
 import config from "./config.json";
-import meals from "./meal.json";
+// import meals from "./meal.json";
 import MapboxCSS from "../src/mapbox-css/mapbox-gl.css";
 
 const { accessToken, style } = config;
 const mealURL = "https://fb-mp-api.herokuapp.com/api/v1/services/";
+const testURL = "https://data.seattle.gov/api/views/hmzu-x5ed/rows.json";
 
+function splitString(stringToSplit, separator) {
+  var arrayOfStrings = stringToSplit.split(separator);
+
+  console.log('The original string is: ' + stringToSplit );
+  console.log('The separator is: ' + separator );
+  // console.log('The array has ' + arrayOfStrings.length + ' elements: ' + arrayOfStrings.join(' / '));
+}
+
+var tempestString = 'Oh brave new world that has such people in it.';
+var monthString = 'Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec';
+
+var space = ' ';
+var comma = ',';
+var array = '[';
+
+// splitString(tempestString, space);
+// splitString(tempestString);
+// splitString(monthString, comma);
+//
+// fetch('API_ENDPOINT', OBJECT)
+//   .then(function(res) {
+//     return res.json();
+//    })
+//   .then(function(resJson) {
+//     return resJson;
+//    })
 function getPrograms() {
-  return fetch(mealURL)
-    .then(res => res.text())
-
-    .then(data => {
-      return new Promise((resolve, reject) => {
-        JSON.parse(data, (err, res) => {
-          if(!err) {
-            resolve(res.data);
-          } else {
-            reject(err);
-          }
-        });
-      });
-    })
+  return fetch(mealURL, meals)
+    .then(function(res) {
+        return res.json();
+      })
+      .then(function(resJson) {
+        console.log(resJson[1].address);
+        return resJson;
+       })
+    // .then(data => {
+    //   return new Promise((resolve, reject) => {
+    //     JSON.parse(data, (err, res) => {
+    //       console.log('Data '+ data);
+    //       if(!err) {
+    //         resolve(res.data);
+    //           // console.log('RES '+ JSON.stringify(res));
+    //         // console.log(data[1[0]]);
+    //         //   console.log(data[0].data);
+    //         //     console.log(data[3]);
+    //       } else {
+    //         reject(err);
+    //       }
+    //     });
+    //   });
+    // })
 }
 
 const containerStyle = {
@@ -69,13 +106,13 @@ export default class MealProgram extends Component {
   };
 
   componentWillMount() {
-    getPrograms().then(res => {
+    getPrograms(meals).then(res => {
       this.setState(({ meals }) => ({
         meals: meals.merge(res.reduce((acc, meal) => {
           return acc.set(meal.id[0], new Map({
             id: meal.id[0],
             name: meal.name[0],
-            position: [ parseFloat(meal.longitude[0]), parseFloat(meal.latitude[0]) ],
+            // position: [ parseFloat(meal.longitude[0]), parseFloat(meal.latitude[0]) ],
             address: parseInt(meal.address[0]),
             slots: parseInt(meal.data.day[0])
           }))
@@ -155,7 +192,7 @@ export default class MealProgram extends Component {
 
           {
             meal && end && (
-              <Popup key={meal.get("id")} coordinates={meal.get("position")} closeButton={true}>
+              <Popup key={data.get("id")} coordinates={meal.get("position")} closeButton={true}>
                 <span style={styles.popup}>
                   {meal.get("name")}
                 </span>
