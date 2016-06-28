@@ -10,8 +10,7 @@ import MapboxCSS from "../src/mapbox-css/mapbox-gl.css";
 const { accessToken, style } = config;
 const mealURL = "https://fb-mp-api.herokuapp.com/api/v1/services/";
 const testURL = "https://data.seattle.gov/api/views/hmzu-x5ed/rows.json";
-var geocoder;
-var map;
+var newC;
 
 
 
@@ -26,6 +25,8 @@ function getPrograms() {
       return new Promise((resolve, reject) => {
         JSON.stringify(data, (err, res) => {
           const meals= data
+
+
           console.log('Data ', meals[1].address);
           if(!err) {
             resolve(res);
@@ -40,6 +41,37 @@ function getPrograms() {
       });
     })
 }
+
+
+function getCoords() {
+  return fetch("https://api.mapbox.com/geocoding/v5/mapbox.places/"+meals[0].address+".json?types=address&access_token=pk.eyJ1IjoibHdlbmtlMDEiLCJhIjoiY2lweWZtNzYxMHh0ZGZ2bTJxcnhwaGFkZCJ9.IvRZkLoYUDbvHIV0Chq1mw")
+    .then(res => res.json())
+
+    .then(data => {
+      return new Promise((resolve, reject) => {
+        JSON.stringify(data, (err, res) => {
+
+          const longitude = data.features[0].geometry.coordinates[0];
+          const latitude = data.features[0].geometry.coordinates[1];
+          newC = [data.features[0].geometry.coordinates[0],data.features[0].geometry.coordinates[1]];
+
+          console.log(newC);
+
+          if(!err) {
+            resolve(res);
+              // console.log('RES '+ JSON.stringify(res));
+            console.log('new ',res);
+            //   console.log(data[0].data);
+            //     console.log(data[3]);
+          } else {
+            reject(err);
+          }
+        });
+      });
+    })
+}
+getCoords();
+console.log(getCoords());
 
 const containerStyle = {
   height: "100vh",
@@ -94,14 +126,16 @@ export default class MealProgram extends Component {
 
   componentWillMount() {
     getPrograms().then(res => {
-      console.log('res ',res)
       this.setState(({ meals: meals }) => ({
         meals: meals.merge(res.reduce((acc, meal) => {
           console.log('meal ',meal.address);
+
           return acc.set(meal.name, new Map({
             address: meal.address,
             name: meal.name,
-            position: meal.address
+            position: newC
+            
+              // position: getCoords(meal.address)
 
 
           }))
@@ -175,7 +209,7 @@ export default class MealProgram extends Component {
                 .map((meal, index) => (
 
                   <Feature
-                    key={meal.get("name")}
+                    key={meal.get("id")}
                     onHover={this._onToggleHover.bind(this, "pointer")}
                     onEndHover={this._onToggleHover.bind(this, "")}
                     onClick={this._markerClick.bind(this, meal)}
