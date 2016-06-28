@@ -10,9 +10,9 @@ export {
   Layer,
   Map,
   Popup,
+
   ZoomControl,
   ScaleControl
 };
 
 export default Map;
-

@@ -40,8 +40,10 @@ const multiPolygonCoords = [
 ];
 
 const markerCoord = [
-  -0.2416815,
-  51.5285582
+  -122.3321,
+  47.6062
+
+    center: [-122.3321, 47.6062],
 ];
 
 const mappedRoute = route.points.map(point => [ point.lat, point.lng ]);
@@ -50,7 +52,7 @@ export default class AllShapes extends Component {
 
   state = {
     popup: null,
-    center: [0.2174037, 51.6476704],
+      center: [-122.3321, 47.6062],
     circleRadius: 30,
     routeIndex: 0
   };
@@ -58,7 +60,7 @@ export default class AllShapes extends Component {
   componentWillMount() {
     setTimeout(() => {
       this.setState({
-        center: [-0.120736, 51.5118219],
+        center:  [-122.3321, 47.6062],
         circleRadius: 10
       });
     }, 6000);

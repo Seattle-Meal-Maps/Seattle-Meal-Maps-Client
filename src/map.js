@@ -40,16 +40,18 @@ export default class ReactMapboxGl extends Component {
     hash: false,
     preserveDrawingBuffer: false,
     center: [
-      -0.2416815,
-      51.5285582
+      -122.3321,
+      47.6062
     ],
     zoom: 11,
     minZoom: 0,
     maxZoom: 20,
     bearing: 0,
     scrollZoom: true,
-    movingMethod: "flyTo"
+    movingMethod: "jumpTo"
   };
+
+
 
   static childContextTypes = {
     map: React.PropTypes.object
@@ -59,6 +61,7 @@ export default class ReactMapboxGl extends Component {
 
   getChildContext = () => ({
     map: this.state.map
+
   });
 
   state = {};
@@ -96,7 +99,7 @@ export default class ReactMapboxGl extends Component {
       zoom,
       minZoom,
       maxZoom,
-      maxBounds,
+      // maxBounds,
       bearing,
       container: this.refs.mapboxContainer,
       center,
